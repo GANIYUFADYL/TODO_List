@@ -1,0 +1,27 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+<body>
+<div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+<h1 style="font-family: 'Roboto', sans-serif font-size: 3rem; font-weight: 40edr0; letter-spacing: 1px; margin: 0; padding: 10px; border-bottom: 2px solid #333; transition: color 0.3s; max-width: 90%;"  onmouseover="this.style.color='#007BFF'" onmouseout="this.style.color='#333'">>My Tasks</h1>
+    <ul style="font-size: 20px;">
+        {% for item in user_tasks: %}
+             <li>
+            <form method="POST" style="display: inline;">
+                <label>
+                    <input type="checkbox" name="delete" value="true">
+                    <span style="font-size: 24px;">{{ item.task }}</span>
+                </label>
+                <div style="margin-left: 30px; font-size: 16px; color: gray;">
+                    <span style="font-weight: bold;">Due:</span> {{ item.date }}
+                </div>
+                <a href="{{ url_for('delete', id=item.id) }}" class="btn btn-danger btn-sm get-started-btn" style="margin-left: 10px;">Delete</a>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+      </div>
+    </div>
+</body>
+

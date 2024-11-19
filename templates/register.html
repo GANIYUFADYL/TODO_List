@@ -1,0 +1,28 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+{% extends "layout.html" %}
+{% block body %}
+<main class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-5 mx-auto">
+          <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+      <!--Rendering the registration form here-->
+        {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p class="flash">{{ message }}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+</html>
